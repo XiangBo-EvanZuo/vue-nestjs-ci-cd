@@ -46,7 +46,6 @@ jobs:
           cd nest-server
           yarn
           yarn build
-    - name: deploy
     - name: copy file via ssh password
       uses: appleboy/scp-action@master
       with:
