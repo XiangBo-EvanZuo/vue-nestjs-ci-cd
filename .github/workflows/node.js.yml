@@ -31,7 +31,15 @@ jobs:
           cd fe-end
           yarn
           yarn build
-        
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        source: "./dist"
+        target: "/var/www/mywebsite"
+
     - name: deploy-rd
       run: |
           cd nest-server
