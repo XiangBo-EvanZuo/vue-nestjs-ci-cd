@@ -33,6 +33,7 @@ jobs:
     - run: ls
     - run: yarn
     - run: pwd
+    - run: ls
     - run: yarn build
     - run: pwd
     - run: ls
