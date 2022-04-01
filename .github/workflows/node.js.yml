@@ -37,7 +37,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        source: "./dist"
+        source: "dist"
         target: "/var/www/mywebsite"
 
     - name: deploy-rd
