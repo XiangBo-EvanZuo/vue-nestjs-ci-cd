@@ -32,7 +32,7 @@ jobs:
           yarn
           yarn build
     - name: copy file via ssh password
-      uses: appleboy/scp-action@v0.1.2
+      uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
