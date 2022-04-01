@@ -28,15 +28,11 @@ jobs:
         cache: 'yarn'
     - run: pwd
     - run: ls
-    - run: cd /home/runner/work/vue-nestjs-ci-cd/vue-nestjs-ci-cd/fe-end
-    - run: pwd
-    - run: ls
-    - run: yarn
-    - run: pwd
-    - run: ls
-    - run: yarn build
-    - run: pwd
-    - run: ls
-    - run: cd /home/runner/work/vue-nestjs-ci-cd/vue-nestjs-ci-cd/nest-server
-    - run: yarn
-    - run: yarn build
+    - run: 
+        cd fe-end
+        yarn
+        yarn build
+    - run: 
+        cd nest-server
+        yarn
+        yarn build
