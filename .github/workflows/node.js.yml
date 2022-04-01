@@ -28,7 +28,7 @@ jobs:
         cache: 'yarn'
     - run: pwd
     - run: ls
-    - run: cd fe-end
+    - run: cd fe-end/
     - run: pwd
     - run: ls
     - run: yarn
@@ -37,6 +37,6 @@ jobs:
     - run: yarn build
     - run: pwd
     - run: ls
-    - run: cd nest-server
+    - run: cd nest-server/
     - run: yarn
     - run: yarn build
