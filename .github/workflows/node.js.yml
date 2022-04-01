@@ -26,13 +26,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - run: pwd
-    - run: ls
-    - run: 
+    - run: |
         cd fe-end
         yarn
         yarn build
-    - run: 
+    - run: |
         cd nest-server
         yarn
         yarn build
