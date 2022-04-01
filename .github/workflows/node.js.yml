@@ -38,7 +38,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         source: "fe-end/dist"
-        target: "test"        
+        target: "/home/wangxiangbo/var/www/mywebsite"        
         port: 22
 
     - name: deploy-rd
