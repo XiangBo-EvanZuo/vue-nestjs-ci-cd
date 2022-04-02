@@ -53,4 +53,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         source: "nest-server/dist/"
-        target: "/var/www/mywebsite"
+        target: "/home/wangxiangbo/var/www/mywebsite"
