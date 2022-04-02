@@ -40,7 +40,7 @@ jobs:
         source: "fe-end/dist"
         target: "/home/wangxiangbo/var/www/mywebsite"        
         port: 22
-
+    # deploy rd
     - name: deploy-rd
       run: |
           cd nest-server
