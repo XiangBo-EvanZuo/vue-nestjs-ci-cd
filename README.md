@@ -5,6 +5,7 @@
 - full-stack
 
 ## continuing～ welcome to join.
+QQ群：917538154
 
 ## TodoList:
 ### FE
