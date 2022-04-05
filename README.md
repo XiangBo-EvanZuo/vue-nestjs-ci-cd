@@ -8,6 +8,9 @@
   QQ群：917538154
 
 ## TodoList:
+### Nginx(Hard - Need)
+  - FE - history/hash config
+
 ### FE
   - Vue3 (done)
   - Pinia
