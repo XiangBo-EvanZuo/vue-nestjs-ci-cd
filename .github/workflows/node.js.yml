@@ -37,7 +37,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        source: "fe-end/dist"
+        source: ${{ secrets.FE_END_SOURCE }}
         target: "/home/wangxiangbo/var/www/mywebsite"        
         port: 22
     # deploy rd
