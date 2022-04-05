@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-04-05 16:02:11
+ * @LastEditTime: 2022-04-05 16:02:52
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /vue-nestjs-ci-cd/README.md
+-->
 # vue + nestjs (TypeScript)
 
 ## Features
@@ -41,7 +49,7 @@
   - 小程序
   - uniapp
   - taro
-  
+
 ### HTML
   - pug
 
@@ -54,3 +62,6 @@
   - webhooks server
   - deploy bash script
   tips: the reason for webhooks is the connection with github is poor, the RD nodel_moules is so slow in file transform. if the connection with github is nice, github action is perfect to CI/CD
+
+## Test
+  - test pull request
