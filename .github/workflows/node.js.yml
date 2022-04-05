@@ -37,8 +37,8 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        source: "fe-end/dist"
-        target: "/home/wangxiangbo/var/www/mywebsite"        
+        source: ${{ secrets.FE_END_SOURCE }}
+        target: ${{ secrets.TARGER_DEPLOY_PATH }}
         port: 22
     # deploy rd
     # - name: deploy-rd
@@ -52,5 +52,5 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        source: "nest-server"
-        target: "/home/wangxiangbo/var/www/mywebsite"
+        source: ${{ secrets.RD_END_SOURCE }}
+        target: ${{ secrets.TARGER_DEPLOY_PATH }}
