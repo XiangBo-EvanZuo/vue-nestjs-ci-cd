@@ -5,7 +5,8 @@ name: Test
 
 on:
   push:
-    branches: [ test ]
+    branches:
+      - test/*
 
 jobs:
   build:
