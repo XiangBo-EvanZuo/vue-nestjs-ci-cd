@@ -13,7 +13,7 @@ export class AppService {
   time = 0;
   getHello(): string {
     this.time++;
-    return 'Hello World!-RD-CI/CD -1 bibibili' + this.time;
+    return 'Hello World!-RD-CI/CD -1 bibibili - test-nev' + this.time;
   }
 
   getInitData(): string {
