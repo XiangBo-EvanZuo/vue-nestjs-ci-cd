@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2022-04-01 14:07:24
- * @LastEditTime: 2022-04-07 18:03:47
+ * @LastEditTime: 2022-04-07 18:23:14
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /vue-nestjs-ci-cd/fe-end/src/components/HelloWorld.vue
@@ -50,7 +50,7 @@ const getData = function() {
 
   <p>
     <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs - FE-CI/CD -1 - bibibili - test-env  - test-nev
+      Vite Docs - FE-CI/CD -1 - test -env
     </a>
     |
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs </a>
