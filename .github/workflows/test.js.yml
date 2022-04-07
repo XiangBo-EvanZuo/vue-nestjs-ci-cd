@@ -37,7 +37,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         source: ${{ secrets.FE_END_SOURCE }}
-        target: ${{ secrets.TEST_TARGER_DEPLOY_PATH }}
+        target: ${{ secrets.TARGER_DEPLOY_PATH }}
         port: 22
     # deploy rd
     # - name: deploy-rd
@@ -52,4 +52,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         source: ${{ secrets.RD_END_SOURCE }}
-        target: ${{ secrets.TEST_TARGER_DEPLOY_PATH }}
+        target: ${{ secrets.TARGER_DEPLOY_PATH }}
