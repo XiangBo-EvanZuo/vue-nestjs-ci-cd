@@ -39,8 +39,6 @@
 - unit test
 - e2e test
 
-### Env - mutiple
-
 ### CSS
   - tailwind
   - h5 - web兼容问题
