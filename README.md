@@ -11,6 +11,7 @@
 ## Features
 - CI/CD
 - full-stack
+- mutiple-env (test / production)
 
 ## continuing～ welcome to join.
   QQ群：917538154
