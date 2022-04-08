@@ -8,7 +8,7 @@
  */
 import { createRouter, createWebHistory, createWebHashHistory } from "vue-router";
 
-const Home = { template: "<div>Home</div>" };
+const Home = import("@/components/Home.vue");
 const ErrorPage = import("@/components/Error.vue");
 const About = import("@/components/HelloWorld.vue");
 
