@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2022-04-08 18:21:12
- * @LastEditTime: 2022-04-08 19:09:52
- * @LastEditors: your name
+ * @LastEditTime: 2022-04-08 19:41:36
+ * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /fe-end/src/App.vue
 -->
@@ -14,7 +14,7 @@
 
 <template>
 <div>
-  router-view
+  router-view1111
   <router-view/>
 </div>
 </template>
