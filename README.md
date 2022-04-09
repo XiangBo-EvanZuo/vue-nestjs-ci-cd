@@ -17,8 +17,10 @@
   QQ群：917538154
 
 ## TodoList:
-### Nginx(Hard - Need)
+### Nginx(Hard - Need) (done)
   - FE - history/hash config
+  - test - hash
+  - production - history
 
 ### FE
   - Vue3 (done)
