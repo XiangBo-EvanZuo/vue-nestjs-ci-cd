@@ -8,26 +8,21 @@
  */
 import { Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Public } from './common/decorators/public.decorator';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Public()
   @Get('/data')
   getHello(): string {
     return this.appService.getHello();
   }
 
+  @Public()
   @Get('/initData')
   getInitData(): string {
     return this.appService.getInitData();
   }
-
-  @Post('/update')
-  updateWebHooks(): string {
-    return this.appService.updateWebHooks();
-  }
-
-
-
 }
