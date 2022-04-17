@@ -46,8 +46,8 @@ export class CoffeesService {
       ...createCoffeeDto,
       flavors,
     });
-
-    return this.coffeeRepository.save(coffee);
+    
+    return await this.coffeeRepository.save(coffee);
   }
 
   async update(id: string, updateCoffeeDto: UpdateCoffeeDto): Promise<Coffee> {
