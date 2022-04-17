@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2022-04-10 20:17:29
+ * @LastEditTime: 2022-04-17 11:16:15
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /vue-nestjs-ci-cd/nest-server/src/app.module.ts
+ */
 import * as Joi from '@hapi/joi';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -6,7 +14,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
-import { DatabaseModule } from './database/database.module';
 import { CommonModule } from './common/common.module';
 
 @Module({
@@ -33,7 +40,6 @@ import { CommonModule } from './common/common.module';
       inject: [ConfigService],
     }),
     CoffeeRatingModule,
-    DatabaseModule,
     CommonModule,
   ],
   controllers: [AppController],

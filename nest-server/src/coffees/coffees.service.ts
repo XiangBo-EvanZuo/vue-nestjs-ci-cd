@@ -51,12 +51,12 @@ export class CoffeesService {
   }
 
   async update(id: string, updateCoffeeDto: UpdateCoffeeDto): Promise<Coffee> {
-    const flavors = 
+    const flavors =
       updateCoffeeDto.flavors &&
       (await Promise.all(
         updateCoffeeDto.flavors.map(name => this.preloadFlavorByName(name))
       ));
-    
+
       const coffee = await this.coffeeRepository.preload({
         id: +id,
         ...updateCoffeeDto,
