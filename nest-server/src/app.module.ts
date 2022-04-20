@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-04-10 20:17:29
- * @LastEditTime: 2022-04-19 12:13:04
+ * @LastEditTime: 2022-04-20 16:38:21
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /vue-nestjs-ci-cd/nest-server/src/app.module.ts
@@ -15,7 +15,6 @@ import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { CommonModule } from './common/common.module';
-import { AuthModule } from './auth/auth.module'
 @Module({
   imports: [
     CoffeesModule,
@@ -44,7 +43,6 @@ import { AuthModule } from './auth/auth.module'
     }),
     CoffeeRatingModule,
     CommonModule,
-    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
