@@ -7,10 +7,10 @@ import { QueryFailedErrorFilter } from './filters/query-fail.filter'
 @Module({
   imports: [ConfigModule],
   providers: [
-    {
-      provide: APP_GUARD,
-      useClass: ApiKeyGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: ApiKeyGuard,
+    // },
     {
       provide: APP_FILTER,
       useClass: QueryFailedErrorFilter,
