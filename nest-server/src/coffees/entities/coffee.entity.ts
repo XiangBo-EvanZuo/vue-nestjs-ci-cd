@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-04-10 18:10:26
- * @LastEditTime: 2022-04-19 18:37:47
+ * @LastEditTime: 2022-04-21 11:20:56
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /nest-server/src/coffees/entities/coffee.entity.ts
@@ -36,7 +36,7 @@ export class Coffee {
 
   @JoinTable()
   @ManyToMany(
-    type => Flavor,
+    _type => Flavor,
     flavor => flavor.coffees,
     {
       cascade: true,
@@ -45,11 +45,11 @@ export class Coffee {
   flavors: Flavor[];
 
   @ManyToOne(
-    type => User,
+    _type => User,
     user => user.coffee,
     {
-      eager: true
-    }
+      eager: true,
+    },
   )
-  user: User
+  user: User;
 }

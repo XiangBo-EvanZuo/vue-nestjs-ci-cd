@@ -7,6 +7,8 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { Event } from '../events/entities/event.entity';
 import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
+import { User } from 'src/auth/user.entity';
+import { GetUser } from 'src/auth/get-user.decorator';
 
 @Injectable()
 export class CoffeesService {
@@ -18,13 +20,39 @@ export class CoffeesService {
     private readonly connection: Connection,
   ) {}
 
-  findAll(paginationQuery: PaginationQueryDto): Promise<any> {
+  async findAll(paginationQuery: PaginationQueryDto, user: User): Promise<any> {
+
     const { limit, offset } = paginationQuery;
-    return this.coffeeRepository.find({
-      relations: ['flavors'],
-      skip: offset,
-      take: limit,
-    });
+
+    const query = this.coffeeRepository.createQueryBuilder('coffee');
+    query.where({ user });
+
+    // if (status) {
+    //   query.andWhere('task.status = :status', { status });
+    // }
+
+    // if (search) {
+    //   query.andWhere(
+    //     '(LOWER(task.title) LIKE LOWER(:search) OR LOWER(task.description) LIKE LOWER(:search))',
+    //     { search: `%${search}%` },
+    //   );
+    // }
+    if (offset) query.skip(offset - 1);
+    if (limit) query.take(limit)
+    query.leftJoinAndSelect('coffee.flavors', 'flavors');
+    query.leftJoinAndSelect('coffee.user', 'user');
+
+
+
+    const tasks = await query.getMany();
+    return tasks
+    // const { limit, offset } = paginationQuery;
+
+    // return this.coffeeRepository.find({
+    //   relations: ['flavors', 'user'],
+    //   skip: offset,
+    //   take: limit,
+    // });
   }
 
   async findOne(id: string): Promise<Coffee> {
@@ -37,37 +65,38 @@ export class CoffeesService {
     return coffee;
   }
 
-  async create(createCoffeeDto: CreateCoffeeDto): Promise<Coffee> {
+  async create(createCoffeeDto: CreateCoffeeDto, user: User): Promise<Coffee> {
     const flavors = await Promise.all(
-      createCoffeeDto.flavors.map(name => this.preloadFlavorByName(name))
+      createCoffeeDto.flavors.map(name => this.preloadFlavorByName(name, user)),
     );
 
     const coffee = this.coffeeRepository.create({
       ...createCoffeeDto,
       flavors,
+      user,
     });
-    
+
     return await this.coffeeRepository.save(coffee);
   }
 
-  async update(id: string, updateCoffeeDto: UpdateCoffeeDto): Promise<Coffee> {
+  async update(id: string, updateCoffeeDto: UpdateCoffeeDto, @GetUser() user: User): Promise<Coffee> {
     const flavors =
       updateCoffeeDto.flavors &&
       (await Promise.all(
-        updateCoffeeDto.flavors.map(name => this.preloadFlavorByName(name))
+        updateCoffeeDto.flavors.map(name => this.preloadFlavorByName(name, user)),
       ));
 
-      const coffee = await this.coffeeRepository.preload({
-        id: +id,
-        ...updateCoffeeDto,
-        flavors,
-      });
+    const coffee = await this.coffeeRepository.preload({
+      id: +id,
+      ...updateCoffeeDto,
+      flavors,
+    });
 
-      if (!coffee) {
-        throw new NotFoundException(`Coffee #${id} not found`);
-      }
+    if (!coffee) {
+      throw new NotFoundException(`Coffee #${id} not found`);
+    }
 
-      return this.coffeeRepository.save(coffee);
+    return this.coffeeRepository.save(coffee);
   }
 
   async remove(id: string): Promise<Coffee> {
@@ -88,7 +117,7 @@ export class CoffeesService {
       const recommendEvent = new Event();
       recommendEvent.name = 'recommend_coffee';
       recommendEvent.type = 'coffee';
-      recommendEvent.payload = { coffeeId: coffee.id};
+      recommendEvent.payload = { coffeeId: coffee.id };
 
       await queryRunner.manager.save(coffee);
       await queryRunner.manager.save(recommendEvent);
@@ -101,13 +130,13 @@ export class CoffeesService {
     }
   }
 
-  private async preloadFlavorByName(name: string): Promise<Flavor> {
+  private async preloadFlavorByName(name: string, user: User): Promise<Flavor> {
     const existingFlavor = await this.flavorRepository.findOne({ name });
 
     if (existingFlavor) {
       return existingFlavor;
     }
 
-    return this.flavorRepository.create({ name });
+    return this.flavorRepository.create({ name, user });
   }
 }

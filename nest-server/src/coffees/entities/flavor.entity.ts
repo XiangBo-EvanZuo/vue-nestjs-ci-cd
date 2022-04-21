@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-04-10 18:10:26
- * @LastEditTime: 2022-04-19 18:41:09
+ * @LastEditTime: 2022-04-21 11:21:19
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /nest-server/src/coffees/entities/flavor.entity.ts
@@ -19,13 +19,13 @@ export class Flavor {
   name: string;
 
   @ManyToMany(
-    type => Coffee,
+    _type => Coffee,
     coffee => coffee.flavors,
   )
   coffees: Coffee[];
 
   @ManyToOne(
-    type => User,
+    _type => User,
     user => user.flavor,
     {
       eager: true,

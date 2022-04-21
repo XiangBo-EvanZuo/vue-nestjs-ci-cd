@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-04-10 18:10:26
- * @LastEditTime: 2022-04-20 16:54:36
+ * @LastEditTime: 2022-04-20 18:14:32
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /nest-server/src/coffees/coffees.controller.ts
@@ -28,9 +28,13 @@ export class CoffeesController {
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @Public()
   @Get()
-  findAll(@Protocol('https') protocol: string, @Query() paginationQuery: PaginationQueryDto): Promise<Coffee> {
+  findAll(
+    @Protocol('https') protocol: string,
+    @Query() paginationQuery: PaginationQueryDto,
+    @GetUser() user: User,
+  ): Promise<Coffee> {
     console.log(protocol);
-    return this.coffeesService.findAll(paginationQuery);
+    return this.coffeesService.findAll(paginationQuery, user);
   }
 
   @Get(':id')
@@ -40,13 +44,20 @@ export class CoffeesController {
   }
 
   @Post()
-  create(@Req() req,  @Body() createCoffeeDto: CreateCoffeeDto, @GetUser() user: User): Promise<Coffee> {
-    return this.coffeesService.create(createCoffeeDto);
+  create(
+    @Body() createCoffeeDto: CreateCoffeeDto,
+    @GetUser() user: User,
+  ): Promise<Coffee> {
+    return this.coffeesService.create(createCoffeeDto, user);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto): Promise<Coffee> {
-    return this.coffeesService.update(id, updateCoffeeDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateCoffeeDto: UpdateCoffeeDto,
+    @GetUser() user: User,
+  ): Promise<Coffee> {
+    return this.coffeesService.update(id, updateCoffeeDto, user);
   }
 
   @Delete(':id')
