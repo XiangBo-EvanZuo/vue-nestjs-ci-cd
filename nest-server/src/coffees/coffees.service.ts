@@ -9,6 +9,7 @@ import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
 import { User } from 'src/auth/user.entity';
 import { GetUser } from 'src/auth/get-user.decorator';
+import { MyLoggerService } from 'src/logger/logger.service';
 
 @Injectable()
 export class CoffeesService {
@@ -18,10 +19,12 @@ export class CoffeesService {
     @InjectRepository(Flavor)
     private readonly flavorRepository: Repository<Flavor>,
     private readonly connection: Connection,
-  ) {}
+    readonly loggerService: MyLoggerService,
+  ) {
+    this.loggerService.setContext(CoffeesService.name);
+  }
 
   async findAll(paginationQuery: PaginationQueryDto, user: User): Promise<any> {
-
     const { limit, offset } = paginationQuery;
 
     const query = this.coffeeRepository.createQueryBuilder('coffee');
@@ -38,14 +41,13 @@ export class CoffeesService {
     //   );
     // }
     if (offset) query.skip(offset - 1);
-    if (limit) query.take(limit)
+    if (limit) query.take(limit);
     query.leftJoinAndSelect('coffee.flavors', 'flavors');
     query.leftJoinAndSelect('coffee.user', 'user');
 
-
-
     const tasks = await query.getMany();
-    return tasks
+    this.loggerService.verbose('getMany1111')
+    return tasks;
     // const { limit, offset } = paginationQuery;
 
     // return this.coffeeRepository.find({
@@ -79,7 +81,11 @@ export class CoffeesService {
     return await this.coffeeRepository.save(coffee);
   }
 
-  async update(id: string, updateCoffeeDto: UpdateCoffeeDto, @GetUser() user: User): Promise<Coffee> {
+  async update(
+    id: string,
+    updateCoffeeDto: UpdateCoffeeDto,
+    @GetUser() user: User,
+  ): Promise<Coffee> {
     const flavors =
       updateCoffeeDto.flavors &&
       (await Promise.all(

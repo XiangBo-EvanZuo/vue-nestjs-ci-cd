@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-03-16 17:08:50
- * @LastEditTime: 2022-04-20 18:33:31
+ * @LastEditTime: 2022-04-22 17:44:17
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /iluvcoffee/src/main.ts
@@ -14,6 +14,7 @@ import { WrapResponseInterceptor } from './common/interceptors/wrap-response.int
 import { TimeoutInterceptor } from './common/interceptors/timeout.interceptor';
 import { TransformInterceptor } from './common/interceptors/exclude-entity-column.interceptor'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { MyLoggerService } from './logger/logger.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -52,7 +53,10 @@ async function bootstrap() {
     },
   }
   const port = portMap[process.env.NODE_ENV]?.port || 5000;
-  console.log(process.env.NODE_ENV, 'server running at', port)
+  const logger = new MyLoggerService()
+  logger.setContext('APP')
+  logger.verbose(`${process.env.NODE_ENV}, 'server running at', ${port}`);
+  app.useLogger(new MyLoggerService());
   await app.listen(port);
 }
 bootstrap();
