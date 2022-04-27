@@ -25,3 +25,6 @@ dist-ssr
 
 /*/dist
 /*/node_modules
+
+/micro-service/*/*/dist
+/micro-service/*/*/node_modules
