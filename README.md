@@ -12,6 +12,7 @@
 - CI/CD
 - full-stack
 - mutiple-env (test: http://81.70.221.165:8026 / production: http://81.70.221.165) 
+- micro-service
 
 ## continuing～ welcome to join.
   QQ群：917538154
