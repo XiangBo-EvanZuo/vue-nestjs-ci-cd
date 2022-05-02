@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-04-26 18:30:50
- * @LastEditTime: 2022-04-27 19:28:55
+ * @LastEditTime: 2022-04-29 19:44:59
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /ms-app/src/app.controller.ts
@@ -30,7 +30,7 @@ export class AppController {
   ): Observable<{ [key: string]: number }> {
     this.client.emit('math:wordcount_log', text);
     console.log('before send');
-    const newObservable = this.client.send('math:wordcount', text);
+    const newObservable = this.client.send('math:wordcount-old', text);
     console.log('after send');
     // newObservable.pipe(
     //   tap((num) => console.log(num)),
@@ -38,7 +38,29 @@ export class AppController {
     // );
     newObservable.subscribe((data) => {
       console.log('subscribe', data);
-      console.log('第一个math微服务之后我再掉另一个微服务中。。。')
+      console.log('第一个math微服务之后我再掉另一个微服务中。。。');
+    });
+    // console.log(this.ctx);
+
+    return newObservable;
+  }
+
+  // ms-math => ms-math-interflow
+  @Post('/math/mirco-wordcount')
+  microWordCount(
+    @Body() { text }: { text: string },
+  ): Observable<{ [key: string]: number }> {
+    this.client.emit('math:wordcount_log', text);
+    console.log('before send mirco');
+    const newObservable = this.client.send('math:wordcount', text);
+    console.log('after send mirco');
+    // newObservable.pipe(
+    //   tap((num) => console.log(num)),
+    //   map((num) => num),
+    // );
+    newObservable.subscribe((data) => {
+      console.log('subscribe', data);
+      console.log('第一个math微服务之后我再掉另一个微服务中。。。');
     });
     // console.log(this.ctx);
 
