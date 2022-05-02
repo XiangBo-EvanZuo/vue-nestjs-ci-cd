@@ -18,6 +18,18 @@
   QQ群：917538154
 
 ## TodoList:
+### Learning-list
+- queryBuilder（partial）
+- rxjs
+
+- 官网视频（done）
+- 官方文档
+- rcba（权限管理）
+- 查看官网例子
+- 微服务（partial）
+- 网关
+- serverless
+
 ### Nginx(Hard - Need) (done)
   - FE - history/hash config
   - test - hash
