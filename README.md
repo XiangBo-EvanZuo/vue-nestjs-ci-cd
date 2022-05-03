@@ -31,6 +31,7 @@
 - 微服务（partial）
 - 网关
 - serverless
+- ejs(ssr)
 
 ### Nginx(Hard - Need) (done)
   - FE - history/hash config
