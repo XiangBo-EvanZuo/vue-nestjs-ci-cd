@@ -12,7 +12,9 @@
 - CI/CD
 - full-stack
 - mutiple-env (test: http://81.70.221.165:8026 / production: http://81.70.221.165) 
-- micro-service
+- micro-service(partial-tested)
+- serverless(partial-tested)
+- combine(micro-service && sls)(todo)
 
 ## continuing～ welcome to join.
   QQ群：917538154
