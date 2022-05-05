@@ -12,9 +12,9 @@
 - CI/CD
 - full-stack
 - mutiple-env (test: http://81.70.221.165:8026 / production: http://81.70.221.165) 
-- micro-service(partial-tested)
-- serverless(partial-tested)
-- combine(micro-service && sls)(todo)
+- micro-service(done)
+- serverless(done)
+- combine(micro-service && sls)(done)
 
 ## continuing～ welcome to join.
   QQ群：917538154
@@ -28,15 +28,15 @@
 - 官方文档
 - rcba（权限管理）
 - 查看官网例子
-- 微服务（partial）
-- 网关
-- serverless
-- ejs(ssr)
+- 微服务（done）
+- 网关(done)
+- serverless(done)
+- ejs(ssr)(todo)
 
 ### Nginx(Hard - Need) (done)
   - FE - history/hash config
   - test - hash
-  - production - history:w
+  - production - history
 
 ### FE
   - Vue3 (done)
