@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2022-04-26 18:30:50
- * @LastEditTime: 2022-04-29 19:44:59
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-05-04 12:19:52
+ * @LastEditors: Evan Zuo v_wangxiangbo01@baidu.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /ms-app/src/app.controller.ts
  */
-import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post, Query } from '@nestjs/common';
 import { ClientProxy, CONTEXT, RequestContext } from '@nestjs/microservices';
 import { map, Observable, tap } from 'rxjs';
 import { AppService } from './app.service';
@@ -23,6 +23,14 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  // @Get('/demo')
+  // execute(): Observable<number> {
+  //   const pattern = { cmd: 'sum' };
+  //   const data = [1, 2, 3, 4, 5];
+  //   console.log('sent')
+  //   return this.client.send<number>(pattern, data);
+  // }
 
   @Post('/math/wordcount')
   wordCount(
@@ -43,6 +51,20 @@ export class AppController {
     // console.log(this.ctx);
 
     return newObservable;
+  }
+
+  @Get('/demo')
+  demo(@Query('text') text: string) {
+    this.client.emit('demo:6379', 'success');
+    console.log('send');
+    return this.client.send('demo:string', text || 'no text');
+  }
+
+  @Get('/demo1')
+  execute(): Observable<number> {
+    const pattern = { cmd: 'sum' };
+    const data = [1, 2, 3, 4, 5];
+    return this.client.send<number>(pattern, data);
   }
 
   // ms-math => ms-math-interflow
